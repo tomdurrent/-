@@ -27,8 +27,7 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/airdrop/home" component={Home} exact={true} />
-        <Route exact path="/airdrop/" render={() => <Redirect to="/airdrop/home" />} />
+        <Route path="/airdrop" component={Home} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>

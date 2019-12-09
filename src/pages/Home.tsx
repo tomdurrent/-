@@ -179,7 +179,7 @@ class Home extends Component {
             language:value
         })
         localStorage.setItem("language",value);
-        window.location.reload();
+        window.location.href = "/airdrop"
     }
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
