@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c51653004e57816259e73957ff21797d",
+    "revision": "fbf1951985cdb607bdb005988e0ca6e9",
     "url": "/airdrop/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/airdrop/static/css/10.3559316a.chunk.css"
   },
   {
-    "revision": "e005ba6935ee7fb0e0f2",
+    "revision": "4fafca18f6d69bfc658f",
     "url": "/airdrop/static/css/main.437a334f.chunk.css"
   },
   {
@@ -404,8 +404,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/airdrop/static/js/99.5d4be638.chunk.js"
   },
   {
-    "revision": "e005ba6935ee7fb0e0f2",
-    "url": "/airdrop/static/js/main.cb9160e5.chunk.js"
+    "revision": "4fafca18f6d69bfc658f",
+    "url": "/airdrop/static/js/main.4f13e3b5.chunk.js"
   },
   {
     "revision": "5c248e3429d204e6e382",
