@@ -2,7 +2,7 @@ import {
     IonContent,
     IonHeader,
     IonPage,
-    IonTitle,
+    IonTextarea,
     IonToolbar,
     IonList,
     IonListHeader,
@@ -26,6 +26,7 @@ class Home extends Component {
 
         this.state = {
             selectedAccount:'',
+            name:'',
             accountsOption:new Array<any>(),
             showToast:false,
             toastMsg:'',
@@ -89,50 +90,44 @@ class Home extends Component {
                             submiting:false,
                         })
                     }else{
-                        if(data.uuid){
-                            const uuid:string = data.uuid;
-                            let reqData:any = {
-                                uuid:uuid,
-                                // @ts-ignore
-                                mainPKr:that.state.selectedAccount,
-                            }
-                            axois.post("https://daq.web.sero.cash/airdrop",reqData).then(response=>{
-                                const _data = response.data;
-                                if(_data === "success"){
-                                    that.setShowToast(true,lang.e().Success);
-                                    that.setState({
-                                        submiting:false,
-                                    })
-                                }else if(_data === "nil"){
-                                    that.setShowToast(true,lang.e().OpenInPopup);
-                                    that.setState({
-                                        submiting:false,
-                                    })
-                                }else if(_data === "exist"){
-                                    that.setShowToast(true,lang.e().HavePart);
-                                    that.setState({
-                                        submiting:false,
-                                    })
-                                }
-                            }).catch(error=>{
-                                that.setShowToast(true,error.message);
+                        const uuid:string = data.uuid;
+                        let reqData:any = {
+                            uuid:uuid,
+                            // @ts-ignore
+                            mainPKr:that.state.selectedAccount,
+                        }
+                        axois.post("https://daq.web.sero.cash/airdrop",reqData).then(response=>{
+                            const _data = response.data;
+                            if(_data === "success"){
+                                that.setShowToast(true,lang.e().Success);
                                 that.setState({
                                     submiting:false,
                                 })
-                            })
-                        }else{
-                            that.setShowToast(true,lang.e().OpenInPopup);
+                            }else if(_data === "nil"){
+                                that.setShowToast(true,lang.e().OpenInPopup);
+                                that.setState({
+                                    submiting:false,
+                                })
+                            }else if(_data === "exist"){
+                                that.setShowToast(true,lang.e().HavePart);
+                                that.setState({
+                                    submiting:false,
+                                })
+                            }
+                        }).catch(error=>{
+                            that.setShowToast(true,error.message);
                             that.setState({
                                 submiting:false,
                             })
-                        }
+                        })
                     }
                 })
             }
 
         }catch (e) {
             console.log("eee",e);
-            that.setShowToast(true,lang.e().OpenInPopup);
+            alert("3");
+            that.setShowToast(true,e.message+":"+lang.e().OpenInPopup);
             that.setState({
                 submiting:false,
             })
@@ -152,12 +147,13 @@ class Home extends Component {
             let tmp:Array<any> = [];
             let i = 0;
             for (let account of dataArr){
-                tmp.push(<IonSelectOption value={account.MainPKr} key={i++} selected={i===0}>{account.Name} {account.MainPKr}</IonSelectOption>)
                 if(i===0){
                     that.setState({
-                        selectedAccount:account.MainPKr
+                        selectedAccount:account.MainPKr,
+                        name:account.Name,
                     })
                 }
+                tmp.push(<IonSelectOption value={account.MainPKr} key={i++} selected={i===0}>{account.Name} {account.MainPKr}</IonSelectOption>)
             }
             that.setState({
                 accountsOption:tmp
@@ -184,7 +180,7 @@ class Home extends Component {
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         // @ts-ignore
-        const {accountsOption ,selectedAccount,showToast,toastMsg,submiting,language}= this.state;
+        const {name ,selectedAccount,showToast,toastMsg,submiting,language}= this.state;
 
 
         let rule:any = [];
@@ -232,10 +228,10 @@ class Home extends Component {
 
                     <IonList>
                         <IonCard>
-                            <IonListHeader>{lang.e().AccountSelection}</IonListHeader>
-                            <IonSelect placeholder={lang.e().AccountSelection} value={selectedAccount} onIonChange={(e)=>{this.changeAccount(e)}}>
-                                {accountsOption}
-                            </IonSelect>
+                            <IonListHeader>{lang.e().AccountSelection} ({name})</IonListHeader>
+                            <IonCardContent>
+                                {selectedAccount}
+                            </IonCardContent>
                         </IonCard>
 
                         <IonCard>

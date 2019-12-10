@@ -18,7 +18,7 @@ class Language {
     zh_CN: any = {
         Title: "限时空投",
         Lang: "语言",
-        AccountSelection: "选择账户",
+        AccountSelection: "账户",
         ActivityRule: {
             Title: "活动规则",
             Detail: [
@@ -37,7 +37,7 @@ class Language {
     en_US: any = {
         Title: "Time-limited airdrop",
         Lang: "Language",
-        AccountSelection: "Account Selection",
+        AccountSelection: "Account",
         ActivityRule: {
             Title: "Activity Rule",
             Detail: [
@@ -56,7 +56,7 @@ class Language {
     ko_KR: any = {
         Title: "시간 제한 에어 드롭",
         Lang: "언어",
-        AccountSelection: "계정 선택",
+        AccountSelection: "계정",
         ActivityRule: {
             Title: "활동 규칙",
             Detail: [
@@ -75,7 +75,7 @@ class Language {
     ja_JP: any = {
         Title: "期間限定エアドロップ",
         Lang: "言語",
-        AccountSelection: "アカウントを選択",
+        AccountSelection: "アカウント",
         ActivityRule: {
             Title: "活動ルール",
             Detail: [
